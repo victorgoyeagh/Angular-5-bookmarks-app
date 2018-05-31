@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { BookmarksService } from '../../../services/bookmarks/bookmarks.service';
+
 
 @Component({
-  selector: 'ph-bookmark-manager',
-  templateUrl: './bookmark-manager.component.html',
-  styleUrls: ['./bookmark-manager.component.css']
+    selector: 'ph-bookmark-manager',
+    templateUrl: './bookmark-manager.component.html',
+    styleUrls: ['./bookmark-manager.component.css']
 })
 export class BookmarkManagerComponent implements OnInit {
 
-  constructor() { }
+    constructor(
+        private _bookmarksService: BookmarksService
+    ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
