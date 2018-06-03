@@ -4,7 +4,7 @@ Angular 5 / Typescript / RxJs / SASS / HTML5
 
 ## Enhancements
 
-Sort, Filter, Folders, UniqueId, tests(tdd)
+Bookmark folders, Apply uniqueId to bookmark.Id, tests(tdd)
 
 ## Run
 
