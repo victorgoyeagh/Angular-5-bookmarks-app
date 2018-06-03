@@ -1,3 +1,66 @@
-<p>
-  bookmark-manager works!
-</p>
+<section>
+    <div class="row bookmark-manager">
+        <div class="col-12">
+            <form [formGroup]="bookmarkManagerForm" autocomplete="on">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="bookmarkName">Name</label>
+                        <input formControlName="bmName" type="text" id="bookmarkName" aria-describedby="bookmarkName" placeholder="Enter bookmark name"
+                            maxlength="50" [ngClass]="{
+                        'form-control': true,'form-control-sm': true,
+                        'invalid': bookmarkManagerForm.controls.bmName.invalid && bookmarkManagerForm.controls.bmName.dirty,
+                        'valid': bookmarkManagerForm.controls.bmName.valid && bookmarkManagerForm.controls.bmName.dirty}
+                        " />
+                        <div *ngIf="bookmarkManagerForm.controls.bmName.invalid && (bookmarkManagerForm.controls.bmName.dirty || bookmarkManagerForm.controls.bmName.touched)"
+                            class="error-list">
+                            <span class="error-list__item" *ngIf="bookmarkManagerForm.controls.bmName.errors.required">
+                                <small>The name is required</small>
+                            </span>
+                            <span class="error-list__item" *ngIf="bookmarkManagerForm.controls.bmName.errors.pattern">
+                                <small>The name is not in a valid format</small>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkLink">Url</label>
+                        <input formControlName="bmLink" type="url" id="bookmarkLink" placeholder="Enter bookmark link" maxlength="1000" [ngClass]="{
+                        'form-control': true,'form-control-sm': true,
+                        'invalid': bookmarkManagerForm.controls.bmLink.invalid && bookmarkManagerForm.controls.bmLink.dirty,
+                        'valid': bookmarkManagerForm.controls.bmLink.valid && bookmarkManagerForm.controls.bmLink.dirty}
+                        " />
+                        <div *ngIf="bookmarkManagerForm.controls.bmLink.invalid && (bookmarkManagerForm.controls.bmLink.dirty || bookmarkManagerForm.controls.bmLink.touched)"
+                            class="error-list">
+                            <span class="error-list__item" *ngIf="bookmarkManagerForm.controls.bmLink.errors.required">
+                                <small>The url is required</small>
+                            </span>
+                            <span class="error-list__item" *ngIf="bookmarkManagerForm.controls.bmLink.errors.pattern">
+                                <small>The url is not in a valid format</small>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkDesc">Description</label>
+                        <input formControlName="bmDesc" type="text" class="form-control" id="bookmarkDesc" placeholder="Enter bookmark description"
+                            maxlength="100" [ngClass]="{
+                        'form-control': true,'form-control-sm': true,
+                        'invalid': bookmarkManagerForm.controls.bmDesc.invalid && bookmarkManagerForm.controls.bmDesc.dirty,
+                        'valid': bookmarkManagerForm.controls.bmDesc.valid && bookmarkManagerForm.controls.bmDesc.dirty}
+                        " />
+                        <div *ngIf="bookmarkManagerForm.controls.bmDesc.invalid && (bookmarkManagerForm.controls.bmDesc.dirty || bookmarkManagerForm.controls.bmDesc.touched)"
+                            class="error-list">
+                            <span class="error-list__item" *ngIf="bookmarkManagerForm.controls.bmDesc.errors.pattern">
+                                <small>The description is not in a valid format</small>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <button (click)="SubmitForm()" type="button" class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> Add bookmark</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

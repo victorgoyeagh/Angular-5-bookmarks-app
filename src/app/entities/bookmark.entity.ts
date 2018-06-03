@@ -1,21 +1,19 @@
 export interface IBookmark {
+    Id: number,
     Name: string,
-    Url: IUrl,
+    Url: string,
     Description: string,
     Denominator: 'IBookmark'
 }
 
 export interface IUrl {
-    hash: string,
-    host: string,
-    hostname: string,
+    hash?: string,
+    host?: string,
+    hostname?: string,
     href: string,
-    readonly origin: string,
-    password: string,
-    pathname: string,
-    port: string,
-    protocol: string,
-    search: string,
-    username: string,
+    pathname?: string,
+    port?: string,
+    protocol?: string,
+    search?: string,
     toString(): string
 }

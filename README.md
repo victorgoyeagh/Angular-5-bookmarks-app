@@ -1,14 +1,21 @@
 # Bookmarks
 
-Angular 4 / Typescript / RxJs / SASS / HTML5
+Angular 5 / Typescript / RxJs / SASS / HTML5
+
+## Enhancements
+
+Sort, Filter, Folders, UniqueId
 
 ## Run
 
 via bash or terminal...
 
 navigate to root of project (cd:<path>/bookmarks)
+
 run "npm install"
+
 run "npm start"
+
 open localhost:4200 in chrome browser
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.

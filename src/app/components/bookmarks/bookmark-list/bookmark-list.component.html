@@ -1,3 +1,85 @@
-<p>
-  bookmark-list works!
-</p>
+<section>
+    <div class="row bookmark-list">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <label for="bookmarkName"><small>Search by name:</small></label>
+                        <input #searchBookmarkTerm type="text"class="form-control form-control-sm" id="searchBookmarkTerm" aria-describedby="searchBookmarkTerm" placeholder="Enter search term"
+                            maxlength="50"/>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 text-right">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="table-responsive">
+                <table>
+                    <thead class="thead-brand">
+                        <tr>
+                            <th scope="col">Name
+                                <a class="btn btn-sm" (click)="ApplySort('Name', SortDirection.Ascending)" title="Sort by Name, Asc">
+                                    <i class="fas fa-sort-down"></i>
+                                </a>
+                                <a class="btn btn-sm" (click)="ApplySort('Name', SortDirection.Descending)" title="Sort by Name, Desc">
+                                    <i class="fas fa-sort-up"></i>
+                                </a>
+                            </th>
+                            <th scope="col">Link
+                                <a class="btn btn-sm" (click)="ApplySort('Url', SortDirection.Ascending)" title="Sort by Url, Asc">
+                                    <i class="fas fa-sort-down"></i>
+                                </a>
+                                <a class="btn btn-sm" (click)="ApplySort('Url', SortDirection.Descending)" title="Sort by Url, Desc">
+                                    <i class="fas fa-sort-up"></i>
+                                </a>
+                            </th>
+                            <th scope="col">Description
+                                <a class="btn btn-sm" (click)="ApplySort('Description', SortDirection.Ascending)" title="Sort by Description, Asc">
+                                    <i class="fas fa-sort-down"></i>
+                                </a>
+                                <a class="btn btn-sm" (click)="ApplySort('Description', SortDirection.Descending)" title="Sort by Description, Desc">
+                                    <i class="fas fa-sort-up"></i>
+                                </a>
+                            </th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!bookmarkCollection">
+                        <td scope="row" colspan="4">There are currently no bookmarks</td>
+                        <tbody>
+                            <tbody *ngIf="bookmarkCollection">
+                                <tr *ngFor="let bookmark of bookmarkCollection | filter: searchTerm | sortBy: sortByParam | paginate: { itemsPerPage: defaultItemsPerPage, currentPage: p }; let i = index;">
+                                    <td scope="row" [innerHTML]="bookmark.Name"></td>
+                                    <td>
+                                        <a [href]="bookmark.Url" title="bookmark.Name" target="_blank">{{ bookmark.Url }}
+                                            <i class="fa fa-external-link-alt"></i>
+                                        </a>
+                                    </td>
+                                    <td [innerHTML]="bookmark.Description"></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" (click)="DeleteBookmark(bookmark.Id)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <p>
+                                            <small>No of bookmarks: {{ (bookmarkCollection) ? (bookmarkCollection | filter: searchTerm).length
+                                                : 0 }} </small>
+                                        </p>
+                                    </td>
+                                    <td colspan="2" class="text-right">
+                                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

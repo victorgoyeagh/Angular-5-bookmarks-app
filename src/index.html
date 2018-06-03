@@ -6,12 +6,13 @@
     <title>Bookmarks</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 
+    <!-- include polyfill, older browsers and responsive -->
     <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <script>
         document.write('<base href="' + document.location.pathname + '" />');
@@ -19,7 +20,10 @@
 </head>
 
 <body>
-    <app-root></app-root>
+    <app-root>
+        <!-- load start-up component here--> 
+        <p><small>Loading...</small></p>
+    </app-root>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
         <section>
             <div class="row">
                 <div class="col-12">
-                    <h1>{{ title }}</h1>
+                    <h1><i class="fa fa-bookmark"></i> {{ title }}</h1>
                 </div>
             </div>
         </section>
@@ -11,9 +11,9 @@
 
     <main>
         <div class="row">
-            <div class="col-12">
-                <ph-bookmark-list></ph-bookmark-list>
-                <ph-bookmark-manager></ph-bookmark-manager>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <router-outlet>
+                </router-outlet>
             </div>
         </div>
     </main>
