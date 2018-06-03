@@ -7,6 +7,6 @@ import { environment } from './../environments/environment';
 })
 
 export class AppComponent {
-    private title:string = environment.config.dictionary.appTitle;
-    private date:number = new Date().getFullYear();
+    public title:string = environment.config.dictionary.appTitle;
+    public date:number = new Date().getFullYear();
 }

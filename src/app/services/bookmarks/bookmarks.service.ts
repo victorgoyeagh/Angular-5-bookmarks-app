@@ -17,7 +17,7 @@ export class BookmarksService {
         this.GetAllBookmarks();
     }
 
-    //Get bookmarks data and broadcast via observable
+    //Get bookmarks data and broadcast via BehaviourSubject observable
     GetAllBookmarks(): Rx.Observable<any> {
         this.bookmarkCollection = <Array<IBookmark>>this._dataProviderService.GetAllItems();
         this.subBookmarkCollection.next(this.bookmarkCollection);
@@ -25,6 +25,7 @@ export class BookmarksService {
         return this.subBookmarkCollection;
     }
 
+    //Get one record for preview
     GetBookmarkById(bookmarkId: number): IBookmark {
         this.bookmarkCollection = <Array<IBookmark>>this._dataProviderService.GetAllItems();
         return this.bookmarkCollection.filter((bookmark: IBookmark) => {
@@ -32,12 +33,14 @@ export class BookmarksService {
         })[0]
     }
 
+    //insert bookmark
     AddNewBookmark(bookmark: IBookmark) {
         this.bookmarkCollection = <Array<IBookmark>>this._dataProviderService.GetAllItems();
         this.bookmarkCollection.push(bookmark);
         this.SaveBookmarks(this.bookmarkCollection);
     }
 
+    //remove bookmak
     DeleteBookmark(bookmarkId: number) {
         this.bookmarkCollection = <Array<IBookmark>>this._dataProviderService.GetAllItems();
         let newCollection = this.bookmarkCollection.filter((bookmark: IBookmark) => {

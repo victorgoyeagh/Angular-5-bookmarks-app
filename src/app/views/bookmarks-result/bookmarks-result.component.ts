@@ -10,7 +10,7 @@ import { Route, Router } from '@angular/router';
     styleUrls: ['./bookmarks-result.component.scss']
 })
 export class BookmarksResultPage implements OnInit {
-    private addedBookmark: IBookmark = undefined;
+    public addedBookmark: IBookmark = undefined;
 
     constructor(
         private _bookmarksService: BookmarksService
@@ -21,7 +21,7 @@ export class BookmarksResultPage implements OnInit {
         let arrParams = search.split("&");
         let params = this.ConvertToParams(arrParams);
 
-        let bmId = params["Id"];
+        let bmId = params["bookmarkId"];
         this.addedBookmark = <IBookmark>this._bookmarksService.GetBookmarkById(bmId);
     }
 

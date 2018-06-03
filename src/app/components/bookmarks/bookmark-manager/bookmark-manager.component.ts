@@ -14,7 +14,7 @@ export class BookmarkManagerComponent {
     private textRestrictRegex = new RegExp("^[0-9,a-z,A-Z ,.'-]+$");
     private urlRestrictRegex = new RegExp("^(https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?$");
 
-    private bookmarkManagerForm = new FormGroup({
+    public bookmarkManagerForm = new FormGroup({
         bmName: new FormControl("", [
             Validators.required,
             Validators.pattern(this.textRestrictRegex)
@@ -64,7 +64,7 @@ export class BookmarkManagerComponent {
                 
                         this._bookmarksService.AddNewBookmark(newBookmark);
 
-                        window.location.replace(`http://localhost:4200/#/bookmarks-result?bookmarkId=${newBookmark.Id}`)
+                        window.location.replace(`/#/bookmarks-result?bookmarkId=${newBookmark.Id}`)
                     } else {
                         console.log(txtNonExistText);
                         return false;

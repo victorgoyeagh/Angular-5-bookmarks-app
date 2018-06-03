@@ -15,14 +15,14 @@ import { environment } from '../../../../environments/environment';
 })
 
 export class BookmarkListComponent implements OnInit, AfterContentInit, OnDestroy {
-    private bookmarkCollection: Array<IBookmark> = undefined;
+    public bookmarkCollection: Array<IBookmark> = undefined;
     private subs: Rx.Subscription;
-    private searchTerm: string = undefined;
+    public searchTerm: string = undefined;
     private sortByParam: string = 'Name';
     public SortDirection = SortDirection;
     private sortDirection: SortDirection = SortDirection.Ascending;
     private formerSortDirection: SortDirection = undefined;
-    private p: number = 1;
+    public p: number = 1;
     private defaultItemsPerPage: number = environment.config.pagination.defaultItemsPerPage;
 
     @ViewChild("searchBookmarkTerm") searchBookmarkTerm: ElementRef;
