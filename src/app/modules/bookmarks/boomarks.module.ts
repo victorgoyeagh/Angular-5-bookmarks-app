@@ -31,7 +31,7 @@ import { FilterPipe } from './pipes/filter.pipe';
         HttpModule
     ],
     providers: [
-        BookmarksService
+        
     ],
     exports: [
         BookmarkListComponent,

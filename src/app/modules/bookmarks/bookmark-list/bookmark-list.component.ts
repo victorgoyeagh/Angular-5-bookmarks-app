@@ -3,7 +3,6 @@ import { BookmarksService } from '../services/bookmarks.service';
 import { IBookmark } from './../entities/bookmark.entity';
 import * as Rx from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
-import { take } from 'rxjs/operators';
 import { SortByPipe } from './../pipes/sort.pipe';
 import { FilterPipe } from './../pipes/filter.pipe';
 import { environment } from '../../../../environments/environment';
