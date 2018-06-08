@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Response, HttpModule, Http } from '@angular/http';
-import { BookmarksService } from '../../../services/bookmarks/bookmarks.service';
+import { BookmarksService } from './../services/bookmarks.service';
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { IBookmark, IUrl } from './../../../entities/bookmark.entity';
+import { IBookmark, IUrl } from './../entities/bookmark.entity';
 import { MiscUtil } from './../../../utils/MiscUtils';
 import { delay, debounceTime } from 'rxjs/operators';
+import { Router, NavigationExtras } from '@angular/router';
+import { URLSearchParams } from '@angular/http';
+
 @Component({
     selector: 'app-bookmark-manager',
     templateUrl: './bookmark-manager.component.html',
@@ -30,6 +33,7 @@ export class BookmarkManagerComponent {
 
     constructor(
         private _http: Http,
+        private _router: Router,
         private _bookmarksService: BookmarksService
     ) {
 
@@ -54,22 +58,29 @@ export class BookmarkManagerComponent {
                             name = controls.bmName.value,
                             link = controls.bmLink.value,
                             desc = controls.bmDesc.value;
-                
+
                         let newBookmark = <IBookmark>{
                             Id: MiscUtil.GetRandomNumberBetween(0, 10000000000),
                             Name: name,
                             Description: desc,
                             Url: link
                         }
-                
+
                         this._bookmarksService.AddNewBookmark(newBookmark);
 
-                        window.location.replace(`/#/bookmarks-result?bookmarkId=${newBookmark.Id}`)
+                        let navExtras = <NavigationExtras>{
+                            queryParams: {
+                                "bookmarkId": newBookmark.Id.toString()
+                            }
+                        };
+
+                        this._router.navigate(["/bookmarks-result"], navExtras);
+
                     } else {
                         console.log(txtNonExistText);
                         return false;
                     }
-                }, (error)=>{
+                }, (error) => {
                     console.log(error);
                 })
         }

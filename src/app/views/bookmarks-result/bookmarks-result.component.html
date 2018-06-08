@@ -1,16 +1,23 @@
 <section>
     <div class="row bookmark-list">
+        <div class="col-12" *ngIf="!addedBookmark">
+            <p>No bookmark no added</p>
+        </div>
         <div class="col-12" *ngIf="addedBookmark">
-            <p>The bookmark <em>"{{addedBookmark.Name}}"</em> was successfully added.</p>
+            <p>The bookmark
+                <em>"{{addedBookmark.Name}}"</em> was successfully added.</p>
             <h4 [innerHTML]="addedBookmark.Name"></h4>
             <p [innerHTML]="addedBookmark.Url"></p>
             <p [innerHTML]="addedBookmark.Description"></p>
         </div>
     </div>
     <div class="row">
-            <div class="col-12">
-                <a href="/#/bookmarks" title="Back to Bookmark Manager"><small><i class="fa fa-angle-left"></i> Back to Bookmark Manager</small></a>
-            </div>
+        <div class="col-12">
+            <a href="/#/bookmarks" title="Back to Bookmark Manager">
+                <small>
+                    <i class="fa fa-angle-left"></i> Add a bookmark</small>
+            </a>
+        </div>
     </div>
 </section>
 

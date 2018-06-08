@@ -6,7 +6,7 @@ import { environment } from './../environments/environment';
     styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class App {
     public title:string = environment.config.dictionary.appTitle;
     public date:number = new Date().getFullYear();
 }

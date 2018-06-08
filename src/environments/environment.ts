@@ -11,7 +11,7 @@ export const environment = {
         storageType: 'localStorage',
         cookieName: 'bookmarks',
         pagination: {
-            defaultItemsPerPage: 3
+            defaultItemsPerPage: 5
         }
     }
 };

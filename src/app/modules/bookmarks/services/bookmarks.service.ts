@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DataProviderService } from '../data-provider/data-provider.service';
+import { DataProviderService } from './../../../services/data-provider/data-provider.service';
 import * as Rx from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
-import { IBookmark } from './../../entities/bookmark.entity';
+import { IBookmark } from './../entities/bookmark.entity';
 
 @Injectable({
     providedIn: 'root'
