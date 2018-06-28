@@ -40,7 +40,7 @@ export class BookmarksService {
         this.SaveBookmarks(this.bookmarkCollection);
     }
 
-    //remove bookmak
+    //remove bookmark
     DeleteBookmark(bookmarkId: number) {
         this.bookmarkCollection = <Array<IBookmark>>this._dataProviderService.GetAllItems();
         let newCollection = this.bookmarkCollection.filter((bookmark: IBookmark) => {

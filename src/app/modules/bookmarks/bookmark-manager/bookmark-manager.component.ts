@@ -68,13 +68,14 @@ export class BookmarkManagerComponent {
 
                         this._bookmarksService.AddNewBookmark(newBookmark);
 
-                        let navExtras = <NavigationExtras>{
+                        let queryString = <NavigationExtras>{
                             queryParams: {
                                 "bookmarkId": newBookmark.Id.toString()
                             }
                         };
 
-                        this._router.navigate(["/bookmarks-result"], navExtras);
+                        //this._router.navigate(["bookmarks-result"], queryString);
+                        this._router.navigate(["bookmarks-result/"+newBookmark.Id.toString()]);
 
                     } else {
                         console.log(txtNonExistText);

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RequestOptions } from '@angular/http';
 import { BookmarksService } from './../../modules/bookmarks/services/bookmarks.service';
 import { IBookmark } from './../../modules/bookmarks/entities/bookmark.entity';
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './bookmarks-result.component.html',
     styleUrls: ['./bookmarks-result.component.scss']
 })
-export class BookmarksResultPage implements OnInit, AfterViewChecked {
+export class BookmarksResultPage implements OnInit {
     public addedBookmark: IBookmark = undefined;
 
     constructor(
@@ -18,13 +18,9 @@ export class BookmarksResultPage implements OnInit, AfterViewChecked {
     ) { }
 
     ngOnInit() {
-
-        this._route.queryParams.subscribe((params) => {
+        this._route.params.subscribe((params) => {
             this.addedBookmark = <IBookmark>this._bookmarksService.GetBookmarkById(params.bookmarkId);
         })
-    }
-
-    ngAfterViewChecked(){
     }
 
 }
